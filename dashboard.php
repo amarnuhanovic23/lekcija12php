@@ -1,4 +1,20 @@
-<?php include('header.php'); ?>
+<?php
+
+    require_once 'config.php';
+
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: login.php');
+        exit();
+    }
+
+    $username = htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8');
+
+    $name = htmlspecialchars($_SESSION['name'], ENT_QUOTES, 'UTF-8');
+
+
+
+
+include('header.php'); ?>
 
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
     <div class="container-fluid">

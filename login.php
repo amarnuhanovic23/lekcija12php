@@ -1,7 +1,30 @@
-<?php include('header.php'); ?>
+<?php 
+
+    require_once 'config.php';
+
+    if (isset($_SESSION['user_id'])) {
+        header('Location: dashboard.php');
+        exit();
+    }
+
+include('header.php'); ?>
 
 <div class="auth-container">
     <h1 class="h3">Please Sign In</h1>
+
+
+
+    <?php if (isset($_GET['registered'])): ?>
+        <div class="alert alert-success" role="alert">
+            Registration successful! Please log in.
+        </div>
+    <?php endif; ?>
+
+    <?php if (isset($_GET['error'])): ?>
+        <div class="alert alert-danger" role="alert">
+            Invalid username or password.
+        </div>
+    <?php endif; ?>
 
     <form action="loginlogic.php" method="POST">
         
